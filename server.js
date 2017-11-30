@@ -23,42 +23,29 @@ app.get('/api/todos', function(req, res, next) {
   Todo.find(function(err, todos) {
     if(err)
       res.send(err);
-    if(Object.keys(todos).length == 0)
-      res.json('No todos found');
-    else {
-      res.send(todos);
-    }
+    res.send(todos);
 
-  }).
-  catch(next);
+  });
 });
 
 app.post('/api/todos', function(req, res) {
-  var text = req.body.text;
-  if(text){
+
     Todo.create({
-      text: text,
+      text: req.body.text,
       done: false
     }, function(err, todo) {
       if(err)
         res.send(err);
+      Todo.find(function(err, todos) {
+        if(err)
+          res.send(err);
+        res.json(todos);
+      });
 
-        Todo.find(function(err, todos) {
-          if(err)
-            res.send(err);
-          res.json(todos);
-        });
-    });
-  }
-  else {
-    Todo.find(function(err, todos) {
-      if(err)
-        res.send(err);
-      res.send(todos + '\nNo todos to post');
-    });
-  }
 
-});
+    });
+  });
+
 
 app.delete('/api/todos/:todo_id', function(req, res) {
     Todo.remove({
@@ -78,7 +65,7 @@ app.delete('/api/todos/:todo_id', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-  res.sendFile('/public/index.html');
+  res.sendFile('/index.html');
 });
 
 app.listen(8080);

@@ -1,6 +1,6 @@
 var scotchTodo = angular.module('scotchTodo', []);
 
-function mainController($scope, $http) {
+scotchTodo.controller('mainController', function($scope, $http) {
   $scope.formData = {};
 
 
@@ -14,7 +14,7 @@ $http.get('/api/todos')
   });
 
 $scope.createTodo = function() {
-  $http.post('/api/todos')
+  $http.post('/api/todos', $scope.formData)
     .success(function(data) {
       $scope.formData = {};
       $scope.todos = data;
@@ -25,7 +25,7 @@ $scope.createTodo = function() {
     });
   };
 
-$scope.deleteTodo = function() {
+$scope.deleteTodo = function(id) {
   $http.delete('/api/todos/' + id)
     .success(function(data) {
       $scope.todos = data;
@@ -36,4 +36,4 @@ $scope.deleteTodo = function() {
     });
 };
 
-}
+});

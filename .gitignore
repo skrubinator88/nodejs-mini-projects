@@ -1,3 +1,11 @@
 # Dependency directories
 node_modules/
 data/
+data/WiredTiger.wt
+*.wt
+data/sizeStorer.wt
+data/WiredTiger.turtle
+data/WiredTiger.wt
+data/index-1--3011843750726961816.wt
+data/collection-0--3011843750726961816.wt
+data/diagnostic.data/metrics.interim
