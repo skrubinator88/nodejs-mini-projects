@@ -12,6 +12,7 @@ body {
 
 .bgimg{
         background-image: url('notepad-wallpaper.jpg');
+        background-size: cover;
 }
 
 h1{
