@@ -69,5 +69,8 @@ app.get('*', function(req, res) {
   res.sendFile('/index.html');
 });
 
-app.listen(8080);
-console.log("App listening on port 8080");
+app.set('port', (process.env.PORT || 8080));
+
+app.listen(app.get('port'), function() {
+    console.log("App listening on port " + app.get('port'));
+});
