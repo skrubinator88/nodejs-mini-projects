@@ -1,7 +1,7 @@
 <!-- index.html -->
 <!doctype html>
 
-<html ng-app = "scotchTodo">
+<html ng-app = "todoList">
 <head>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,26 +18,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <!--JQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <!--Font awesome CDN-->
+    <script src="https://use.fontawesome.com/36c67f75da.js"></script>
     <!--Main Controller-->
     <script src="/app.js"></script>
 
 </head>
 
 <body ng-controller = "mainController" >
-  <div class = "container">
+  <div class = "container bgimg">
 
-    <div class="jumbotron text-center">
-            <h1>Sample Todo App <span class="label label-info"> {{ todos.length }} </span></h1>
+    <div class="text-center">
+            <h1>Simple Todo-List App <span class="label label-info"> {{ todos.length }} </span></h1>
     </div>
 
-    <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
+    <div id="todo-list" class="row text-left">
+            <div class="col-sm-4 col-sm-offset-1">
 
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
                 <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                    <label class = "glyph-checkbox">
+                        <input type="checkbox" ng-click="deleteTodo(todo._id)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        {{ todo.text }}
                     </label>
                 </div>
 

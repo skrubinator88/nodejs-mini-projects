@@ -1,6 +1,6 @@
-var scotchTodo = angular.module('scotchTodo', []);
+var TodoList = angular.module('todoList', []);
 
-scotchTodo.controller('mainController', function($scope, $http) {
+TodoList.controller('mainController', function($scope, $http) {
   $scope.formData = {};
 
 
