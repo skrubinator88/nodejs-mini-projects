@@ -6,8 +6,9 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 //models
 var Todo = require('./models/Todo');
-
-mongoose.connect('mongodb://127.0.0.1/todo-app');
+var DB_USER = process.env.DB_USER;
+var DB_PASS = process.env.DB_PASS;
+mongoose.connect('mongodb://' + DB_USER + ':' + DB_PASS + '@ds149124.mlab.com:49124/test-ivb');
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
